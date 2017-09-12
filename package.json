@@ -1,6 +1,6 @@
 {
   "name": "pretty-json",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress --hot --inline",
-    "build:js": "uglifyjs src/util.js src/tpl.js src/leaf.js src/node.js -o dist/pretty-json.min.js",
+    "build:js": "uglifyjs dist/pretty-json.js -o dist/pretty-json.min.js",
     "build:css": "cp css/pretty-json.css dist/pretty-json.css",
-    "build": "rm -rf dist && mkdir dist && touch dist/pretty-json.min.js && npm run build:js && npm run build:css"
+    "build": "rm -rf dist && mkdir dist && webpack && npm run build:js && npm run build:css"
   }
 }

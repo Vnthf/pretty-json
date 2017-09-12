@@ -4,7 +4,7 @@ module.exports = {
     entry: './src/index.js',
     context: __dirname,
     output: {
-        filename: 'bundle.js',
+        filename: 'pretty-json.js',
         publicPath: '/dist/',
         path: path.resolve(__dirname, 'dist')
     },
