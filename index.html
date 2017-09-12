@@ -7,18 +7,7 @@
     <!-- lib -->
     <script type="text/javascript" src="libs/jquery-1.11.1.min.js" ></script>
     <script type="text/javascript" src="libs/lodash.min.js" ></script>
-
-    <script type="text/javascript" src="src/util.js" ></script>
-    <script type="text/javascript" src="src/tpl.js" ></script>
-    <script type="text/javascript" src="src/node.js" ></script>
-    <script type="text/javascript" src="src/leaf.js" ></script>
-
-    <!-- src dev
-    <script type="text/javascript" src="/pretty-json-debug.js" ></script>
-    -->
-    <!-- src build -->
-    <!--<script type="text/javascript" src="dist/pretty-json.min.js" ></script>-->
-
+    <script type="text/javascript" src="./dist/bundle.js" ></script>
     <!-- just css for this page example -->
     <style type="text/css">
         body{
@@ -62,18 +51,8 @@
 
         el.btnAction.on('click', function(){
             var json = el.input.val();
-
-            var data;
-            try{ data = JSON.parse(json); }
-            catch(e){ 
-                alert('not valid JSON');
-                return;
-            }
-
-            var node = new PrettyJSON.view.Node({ 
-                el:el.result,
-                data: data,
-                dateFormat:"DD/MM/YYYY - HH24:MI:SS"
+            prettyJson(json, {
+                el: el.result
             });
         });
 
