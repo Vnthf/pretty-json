@@ -1,11 +1,5 @@
-//namespaces def.
-var PrettyJSON = {
-    view:{},
-    tpl:{}
-};
-
 /**
-* @class PrettyJSON.util
+* @class this
 * helpers def. 
 *
 * @author #rbarriga
@@ -24,12 +18,12 @@ let util = {
     dateFormat (date, f){
         f = f.replace('YYYY', date.getFullYear());
         f = f.replace('YY', String(date.getFullYear()).slice(-2));
-        f = f.replace('MM', PrettyJSON.util.pad(date.getMonth() + 1, 2));
-        f = f.replace('DD', PrettyJSON.util.pad(date.getDate(), 2));
-        f = f.replace('HH24', PrettyJSON.util.pad(date.getHours(), 2));
-        f = f.replace('HH', PrettyJSON.util.pad((date.getHours() % 12), 2));
-        f = f.replace('MI', PrettyJSON.util.pad(date.getMinutes(), 2));
-        f = f.replace('SS', PrettyJSON.util.pad(date.getSeconds(), 2));
+        f = f.replace('MM', this.pad(date.getMonth() + 1, 2));
+        f = f.replace('DD', this.pad(date.getDate(), 2));
+        f = f.replace('HH24', this.pad(date.getHours(), 2));
+        f = f.replace('HH', this.pad((date.getHours() % 12), 2));
+        f = f.replace('MI', this.pad(date.getMinutes(), 2));
+        f = f.replace('SS', this.pad(date.getSeconds(), 2));
         return f;
     },
     parseJSON (data) {

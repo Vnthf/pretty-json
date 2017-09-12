@@ -2,22 +2,29 @@ PRETTY JSON
 == 
 
 Simple library to render/format a JS obj to an HTML view.
-기존의 pretty-json 소스를 변경하였습니다.
 
-<br/>
-[pretty-json-min.js](http://warfares.github.io/pretty-json/pretty-json-min.js)
+I forked 
+[this-repo](http://warfares.github.io/pretty-json).
 
-Live Demo 
---
-This is an [live demo](http://warfares.github.com/pretty-json/)
-* ..you could get more valid json input from here (http://json.org/example.html)
+* I removed dependency except jquery. (I will remove jquery too.)
+* Enable module import via npm.
+* Change code to es6
+* Remove mouse event and fold 
 
 Dependecies
 --
-* Backbone 1.1.2 (code structure) 
-* lodash 3.9.3
 * JQuery 1.11.1 (DOM manipulation)
 
+Download
+--
+```
+npm install pretty-json-string
+
+let prettyJson = require('pretty-json-string')
+or
+import prettyJson from 'pretty-json-string'
+``
+`
 Usage
 --
 <pre>
@@ -30,10 +37,11 @@ var obj = {
   wife:{name:'Jane Doe', age:28 }
 }
 
-var node = new PrettyJSON.view.Node({
+var node = prettyJson(obj, {
   el:$('#elem'),
-  data:obj
 });
+
+
 </pre>
 
 Properties.
@@ -52,23 +60,4 @@ Properties.
   - MI : minutes
   - SS : seconds
 
-Methods
---
-Node
-<br/>
-<b>expandAll</b>: recursive open & render all nodes. (lazy render: the node will render only if it's expanded)
-<br/>
-<b>collapseAll</b>: close (Hide) all nodes.
 
-Events
---
-Node
-<br/>
-<b>collapse</b>: trigger when a node is show or hide. (event)
-<br/>
-<b>mouseover</b>: trigger when mouse over a node. (path)
-<br/>
-<b>mouseout</b>: trigger when mouse out the node (event)
-
-* Note: "node" is an Obj or an Array.
-* Note : only tested in Chrome & FireFox.

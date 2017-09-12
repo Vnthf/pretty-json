@@ -1,7 +1,15 @@
 {
-  "name": "pretty-json",
-  "version": "1.0.0",
-  "dependencies": {},
+  "name": "pretty-json-string",
+  "version": "1.0.3",
+  "description": "It shows JSON string beautifully.",
+  "author":  {
+    "email": "vnthff@gmail.com",
+    "name": "Hou-choi"
+  },
+  "dependencies": {
+    "jquery": "1.11.1"
+  },
+  "main": "dist/pretty-json.js",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -11,9 +19,18 @@
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
   },
-  "engines": {
-    "node": ">=0.10.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vnthf/pretty-json.git"
   },
+  "engines": {
+    "node": ">=4.4"
+  },
+  "licenses": [ {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/MIT"
+  } ],
+  "keyword": ["JSON", "pretty"],
   "scripts": {
     "start": "webpack-dev-server --progress --hot --inline",
     "build:js": "uglifyjs dist/pretty-json.js -o dist/pretty-json.min.js",

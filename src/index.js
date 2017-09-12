@@ -6,5 +6,8 @@ function render (data, opt) {
     new Node(opt);
 }
 
-window.prettyJson = render;
-module.export = render;
+if (typeof(window) !== 'undefined') {
+    window.prettyJson = render;
+}
+module.exports = render;
+

@@ -109,13 +109,7 @@ class Node {
     }
 
     template() {
-        return `<div class="pj-node-container">
-        <span class="pj-node-top pj-node-bracket"></span>
-        <div class="pj-node-content-wrapper">
-            <ul class="pj-node-body"></ul>
-        </div>
-        <span class="pj-node-down pj-node-bracket"></span>
-        </div>`;
+        return `<div class="pj-node-container"><span class="pj-node-top pj-node-bracket"></span><div class="pj-node-content-wrapper"><ul class="pj-node-body"></ul></div><span class="pj-node-down pj-node-bracket"></span></div>`;
     }
 }
 

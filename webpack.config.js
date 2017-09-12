@@ -6,6 +6,8 @@ module.exports = {
     output: {
         filename: 'pretty-json.js',
         publicPath: '/dist/',
+        libraryTarget: "umd",
+        library: "pretty-json-string",
         path: path.resolve(__dirname, 'dist')
     },
     module: {

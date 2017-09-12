@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["pretty-json-string"] = factory();
+	else
+		root["pretty-json-string"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -73,14 +83,8 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//namespaces def.
-var PrettyJSON = {
-    view: {},
-    tpl: {}
-};
-
 /**
-* @class PrettyJSON.util
+* @class this
 * helpers def. 
 *
 * @author #rbarriga
@@ -100,12 +104,12 @@ var util = {
     dateFormat: function dateFormat(date, f) {
         f = f.replace('YYYY', date.getFullYear());
         f = f.replace('YY', String(date.getFullYear()).slice(-2));
-        f = f.replace('MM', PrettyJSON.util.pad(date.getMonth() + 1, 2));
-        f = f.replace('DD', PrettyJSON.util.pad(date.getDate(), 2));
-        f = f.replace('HH24', PrettyJSON.util.pad(date.getHours(), 2));
-        f = f.replace('HH', PrettyJSON.util.pad(date.getHours() % 12, 2));
-        f = f.replace('MI', PrettyJSON.util.pad(date.getMinutes(), 2));
-        f = f.replace('SS', PrettyJSON.util.pad(date.getSeconds(), 2));
+        f = f.replace('MM', this.pad(date.getMonth() + 1, 2));
+        f = f.replace('DD', this.pad(date.getDate(), 2));
+        f = f.replace('HH24', this.pad(date.getHours(), 2));
+        f = f.replace('HH', this.pad(date.getHours() % 12, 2));
+        f = f.replace('MI', this.pad(date.getMinutes(), 2));
+        f = f.replace('SS', this.pad(date.getSeconds(), 2));
         return f;
     },
     parseJSON: function parseJSON(data) {
@@ -161,9 +165,9 @@ exports.default = util;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-var _node = __webpack_require__(3);
+
+var _node = __webpack_require__(2);
 
 var _node2 = _interopRequireDefault(_node);
 
@@ -178,40 +182,13 @@ function render(data, opt) {
     new _node2.default(opt);
 }
 
-window.prettyJson = render;
-module.export = render;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
+if (typeof window !== 'undefined') {
+    window.prettyJson = render;
+}
+module.exports = render;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -223,7 +200,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _leaf = __webpack_require__(4);
+var _leaf = __webpack_require__(3);
 
 var _leaf2 = _interopRequireDefault(_leaf);
 
@@ -356,7 +333,7 @@ var Node = function () {
     }, {
         key: 'template',
         value: function template() {
-            return '<div class="pj-node-container">\n        <span class="pj-node-top pj-node-bracket"></span>\n        <div class="pj-node-content-wrapper">\n            <ul class="pj-node-body"></ul>\n        </div>\n        <span class="pj-node-down pj-node-bracket"></span>\n        </div>';
+            return '<div class="pj-node-container"><span class="pj-node-top pj-node-bracket"></span><div class="pj-node-content-wrapper"><ul class="pj-node-body"></ul></div><span class="pj-node-down pj-node-bracket"></span></div>';
         }
     }]);
 
@@ -366,7 +343,7 @@ var Node = function () {
 exports.default = Node;
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -448,4 +425,5 @@ exports.default = Leaf;
 
 /***/ })
 /******/ ]);
+});
 //# sourceMappingURL=pretty-json.js.map
