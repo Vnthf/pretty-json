@@ -1,4 +1,5 @@
 import Util from './util'
+import $ from 'jquery'
 
 class Leaf {
     constructor(opt) {

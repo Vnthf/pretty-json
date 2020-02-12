@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("jQuery"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["jQuery"], factory);
 	else if(typeof exports === 'object')
-		exports["pretty-json-string"] = factory();
+		exports["pretty-json-string"] = factory(require("jQuery"));
 	else
-		root["pretty-json-string"] = factory();
-})(this, function() {
+		root["pretty-json-string"] = factory(root["jQuery"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -162,12 +162,18 @@ exports.default = util;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _node = __webpack_require__(2);
+var _node = __webpack_require__(3);
 
 var _node2 = _interopRequireDefault(_node);
 
@@ -188,7 +194,7 @@ if (typeof window !== 'undefined') {
 module.exports = render;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -200,13 +206,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _leaf = __webpack_require__(3);
+var _leaf = __webpack_require__(4);
 
 var _leaf2 = _interopRequireDefault(_leaf);
 
 var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
+
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -217,9 +227,9 @@ var Node = function () {
         _classCallCheck(this, Node);
 
         if (!opt.el) {
-            this.$el = $("<span></span>");
+            this.$el = (0, _jquery2.default)("<span></span>");
         } else {
-            this.$el = opt.el instanceof $ ? opt.el : $(opt.el);
+            this.$el = opt.el instanceof _jquery2.default ? opt.el : (0, _jquery2.default)(opt.el);
         }
 
         this.options = opt;
@@ -270,7 +280,7 @@ var Node = function () {
             var _this = this;
 
             var count = 1;
-            $.each(this.data, function (key, val) {
+            _jquery2.default.each(this.data, function (key, val) {
                 var isLast = count === _this.size;
                 count = count + 1;
                 var path = _this.type === "array" ? _this.path + "[" + key + "]" : _this.path + "." + key;
@@ -284,11 +294,11 @@ var Node = function () {
                     isLast: isLast
                 };
                 var child = _util2.default.isObject(val) || _util2.default.isArray(val) ? new Node(opt) : new _leaf2.default(opt);
-                var li = $("<li/>");
+                var li = (0, _jquery2.default)("<li/>");
                 var quotation = '"';
                 var colom = "&nbsp;:&nbsp;";
-                var left = $("<span />");
-                var right = $("<span />").append(child.$el);
+                var left = (0, _jquery2.default)("<span />");
+                var right = (0, _jquery2.default)("<span />").append(child.$el);
                 _this.type === "array" ? left.html("") : left.html(quotation + key + quotation + colom);
                 left.append(right);
                 li.append(left);
@@ -322,7 +332,7 @@ var Node = function () {
     }, {
         key: 'expandAll',
         value: function expandAll() {
-            $.each(this.childs, function (child) {
+            _jquery2.default.each(this.childs, function (child) {
                 if (child instanceof Node) {
                     child.show();
                     child.expandAll();
@@ -343,7 +353,7 @@ var Node = function () {
 exports.default = Node;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -359,6 +369,10 @@ var _util = __webpack_require__(0);
 
 var _util2 = _interopRequireDefault(_util);
 
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -367,7 +381,7 @@ var Leaf = function () {
     function Leaf(opt) {
         _classCallCheck(this, Leaf);
 
-        this.$el = $("<span></span>");
+        this.$el = (0, _jquery2.default)("<span></span>");
         this.options = opt;
         this.data = _util2.default.isUndefined(this.options.data) ? null : this.options.data;
         this.level = _util2.default.isUndefined(this.options.level) ? 0 : this.options.level;
@@ -379,7 +393,7 @@ var Leaf = function () {
     }
 
     _createClass(Leaf, [{
-        key: "getType",
+        key: 'getType',
         value: function getType() {
             var m = "string";
             var d = this.data;
@@ -387,13 +401,13 @@ var Leaf = function () {
             return m;
         }
     }, {
-        key: "getState",
+        key: 'getState',
         value: function getState() {
             var coma = this.isLast ? "" : ",";
             return { data: this.data, level: this.level, path: this.path, type: this.type, coma: coma };
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             var state = this.getState(),
                 quotation = '"';
@@ -408,13 +422,13 @@ var Leaf = function () {
             return this;
         }
     }, {
-        key: "template",
+        key: 'template',
         value: function template(_ref) {
             var type = _ref.type,
                 data = _ref.data,
                 coma = _ref.coma;
 
-            return "<div class=\"pj-leaf-container\"><span class=\"pj-" + type + "\">" + data + "</span><span>" + coma + "</span></div>";
+            return '<div class="pj-leaf-container"><span class="pj-' + type + '">' + data + '</span><span>' + coma + '</span></div>';
         }
     }]);
 

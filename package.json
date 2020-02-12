@@ -2,7 +2,7 @@
   "name": "pretty-json-string",
   "version": "1.0.3",
   "description": "It shows JSON string beautifully.",
-  "author":  {
+  "author": {
     "email": "vnthff@gmail.com",
     "name": "Hou-choi"
   },
@@ -26,11 +26,16 @@
   "engines": {
     "node": ">=4.4"
   },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT"
-  } ],
-  "keyword": ["JSON", "pretty"],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "keyword": [
+    "JSON",
+    "pretty"
+  ],
   "scripts": {
     "start": "webpack-dev-server --progress --hot --inline",
     "build:js": "uglifyjs dist/pretty-json.js -o dist/pretty-json.min.js",
