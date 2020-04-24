@@ -34,7 +34,7 @@ class Leaf {
         if (state.type == "date" && this.dateFormat) {
             state.data = quotation + Util.dateFormat(this.data, this.dateFormat) + quotation
         } else if (state.type == "string") {
-            state.data = quotation + state.data + quotation
+            state.data = quotation + Util.encodeHTMLEntities(state.data) + quotation
         } else if (state.type == "null") {
             state.data = "null"
         }
