@@ -155,6 +155,11 @@ var util = {
             return obj.length;
         }
         return Object.keys(obj).length;
+    },
+    encodeHTMLEntities: function encodeHTMLEntities(raw) {
+        return raw.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+            return '&#' + i.charCodeAt(0) + ';';
+        });
     }
 };
 
@@ -299,7 +304,7 @@ var Node = function () {
                 var colom = "&nbsp;:&nbsp;";
                 var left = (0, _jquery2.default)("<span />");
                 var right = (0, _jquery2.default)("<span />").append(child.$el);
-                _this.type === "array" ? left.html("") : left.html(quotation + key + quotation + colom);
+                _this.type === "array" ? left.html("") : left.html(quotation + _util2.default.encodeHTMLEntities(key) + quotation + colom);
                 left.append(right);
                 li.append(left);
 
@@ -414,7 +419,7 @@ var Leaf = function () {
             if (state.type == "date" && this.dateFormat) {
                 state.data = quotation + _util2.default.dateFormat(this.data, this.dateFormat) + quotation;
             } else if (state.type == "string") {
-                state.data = quotation + state.data + quotation;
+                state.data = quotation + _util2.default.encodeHTMLEntities(state.data) + quotation;
             } else if (state.type == "null") {
                 state.data = "null";
             }
