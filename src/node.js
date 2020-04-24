@@ -70,7 +70,7 @@ class Node {
             let colom = "&nbsp;:&nbsp;";
             let left = $("<span />");
             let right = $("<span />").append(child.$el);
-            this.type === "array" ? left.html("") : left.html(quotation + key + quotation + colom);
+            this.type === "array" ? left.html("") : left.html(quotation + Util.encodeHTMLEntities(key) + quotation + colom);
             left.append(right);
             li.append(left);
 
